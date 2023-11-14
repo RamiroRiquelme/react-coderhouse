@@ -1,15 +1,15 @@
-// https://react-icons.github.io/react-icons
-
-import { ContainerBox } from "./components/ContainerBox/ContainerBox";
-import { NavBar } from "./components/NavBar/NavBar";
+import { ItemDetailContainer, ItemListContainer, NavBar } from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const App = () => {
   return (
-    <>
+    <BrowserRouter>
       <NavBar />
-      <h1>Relojes Shapiro</h1>
-      <h4>Vendiendo calidad desde 2019</h4>
-      <ContainerBox message={"Bienvenidos a la tienda más importante de relojes de Latinoamerica"} />
-    </>
+      <Routes>
+        <Route path="/" element={<ItemListContainer greeting={"Bienvenidos a Relojes Shapiro"} />} />
+        <Route path="/category/:category" element={<ItemListContainer greeting={"Bienvenidos a Relojes Shapiro"} />} />
+        <Route path="/item/:id" element={<ItemDetailContainer />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
